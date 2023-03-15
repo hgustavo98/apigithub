@@ -57,9 +57,9 @@ const theme = {
     xs: '0',
     sm: '576px',
     md: '768px',
-    Ig: '992px',
+    lg: '992px',
     xl: '1200px',
-    XXI: ' l400px ',
+    xxl: '1400px',
   },
 };
 

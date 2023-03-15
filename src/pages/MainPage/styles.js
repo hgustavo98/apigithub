@@ -32,12 +32,13 @@ export const Input = styled.input`
   background: rgba(0, 0, 0, 0.8);
   width: 100%;
   height: 64px;
+  line-height: 64px;
   border: none;
   font-size: 24px;
   margin-right: 24px;
   padding: 0 24px;
 
-  &::placeholder {
+  &::placehoder {
     color: ${(props) => props.theme.colors.metalDark};
   }
 `;
@@ -51,9 +52,9 @@ export const Button = styled(Link)`
   width: 80px;
   height: 64px;
   border: 3px solid ${(props) => props.theme.colors.text};
-  transition: backgroud 0.03;
+  transition: background 0.3s;
 
-  &::hover {
+  &:hover {
     background: ${(props) => props.theme.colors.container};
   }
 `;

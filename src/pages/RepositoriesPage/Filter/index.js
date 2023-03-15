@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import { Container, Selector, Cleaner } from './styles';
 
 const Filter = ({ languages, currentLanguage, onClick }) => {
@@ -17,16 +18,16 @@ const Filter = ({ languages, currentLanguage, onClick }) => {
 
   return (
     <Container>
-      {' '}
-      <Cleaner onClick={() => onClick && onClick(undefined)}>
-        Limpar
-      </Cleaner>{' '}
       {selectors}
+      <Cleaner onClick={() => onClick && onClick(undefined)}>Limpar</Cleaner>
     </Container>
   );
 };
 
-Filter.defaultProps = { currentLanguage: null, onClick: null };
+Filter.defaultProps = {
+  currentLanguage: null,
+  onClick: null,
+};
 
 Filter.propTypes = {
   languages: PropTypes.arrayOf(

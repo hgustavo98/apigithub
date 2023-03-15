@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import Repository from './Repository';
+
 import { Container } from './styles';
 
 const Repositories = ({ repositories, currentLanguage }) => {
@@ -12,16 +14,19 @@ const Repositories = ({ repositories, currentLanguage }) => {
     .map((repository) => (
       <Repository key={repository.id} repository={repository} />
     ));
+
   return <Container>{repos}</Container>;
 };
 
-Repositories.defaultProps = { currentLanguage: undefined };
+Repositories.defaultProps = {
+  currentLanguage: undefined,
+};
 
 Repositories.propTypes = {
   repositories: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      name: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
       html_url: PropTypes.string.isRequired,
       language: PropTypes.string,

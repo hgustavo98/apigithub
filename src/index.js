@@ -1,59 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import Profile from './Profile';
-import { Loading, Container, Sidebar, Main } from './styles';
-import Filter from './Filter';
-import Repositories from './Repositories';
-import { getUser, getLangsFrom, getRepos } from '../../services/api';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+import reportWebVitals from './reportWebVitals';
 
-const RepositoriesPage = () => {
-  const { login } = useParams();
-  const [user, setUser] = useState();
-  const [repositories, setRepositories] = useState();
-  const [languages, setlanguages] = useState();
-  const [currentLanguage, setCurrentLanguage] = useState();
-  const [loading, setLoading] = useState(true);
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
 
-  useEffect(() => {
-    const loadData = async () => {
-      const [userResponse, repositoriesResponse] = await Promise.all([
-        getUser(login),
-        getRepos(login),
-      ]);
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://cra.link/PWA
+serviceWorkerRegistration.unregister();
 
-      setUser(userResponse.data);
-      setRepositories(repositoriesResponse.data);
-      setlanguages(getLangsFrom(repositoriesResponse.data));
-      setLoading(false);
-    };
-    loadData();
-  }, []);
-
-  const onFi1terClick = (language) => {
-    setCurrentLanguage(language);
-  };
-
-  if (loading) {
-    return <Loading>Carregando...</Loading>;
-  }
-
-  return (
-    <Container>
-      <Sidebar>
-        <Profile user={user} />
-        <Filter
-          languages={languages}
-          currentLanguage={currentLanguage}
-          onClick={onFi1terClick}
-        />
-      </Sidebar>
-      <Main>
-        <Repositories
-          repositories={repositories}
-          currentLanguage={currentLanguage}
-        />
-      </Main>
-    </Container>
-  );
-};
-export default RepositoriesPage;
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();

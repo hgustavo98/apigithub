@@ -23,7 +23,7 @@ export const Selector = styled.button`
   width: 100%;
   min-height: 2rem;
   border: none;
-  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
   transition: background 0.3s, transform 0.3s;
   padding: 0 1rem;
@@ -32,13 +32,12 @@ export const Selector = styled.button`
   &.selected {
     background: ${(props) => props.color || props.theme.colors.light};
     color: ${(props) =>
-      props.color ? props.theme.colors.wite : props.theme.colors.black};
+      props.color ? props.theme.colors.white : props.theme.colors.black};
     transform: translateX(5px) scale(1.02);
   }
 
   @media screen and (max-width: ${(props) => props.theme.breakpoints.md}) {
     border-radius: 20px;
-
     &:hover,
     &.selected {
       transform: translateX(0) scale(1.02);
