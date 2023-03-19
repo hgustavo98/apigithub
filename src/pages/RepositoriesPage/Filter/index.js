@@ -9,7 +9,9 @@ const Filter = ({ languages, currentLanguage, onClick }) => {
       key={name.toLowerCase()}
       color={color}
       className={currentLanguage === name ? 'selected' : ''}
-      onClick={() => onClick && onClick(name)}
+      onClick={() =>
+        currentLanguage === name ? onClick(undefined) : onClick(name)
+      }
     >
       <span>{name}</span>
       <span>{count}</span>
